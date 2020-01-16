@@ -52,7 +52,7 @@ The component sends the following events:
 ```
   element.addEventListener('data-update', function (event) {
     console.log(event.type); // prints 'data-update'
-    console.log(event.detail.value); // prints new selected language.
+    console.log(event.detail.value); // prints new value.
   });
 ```
 
@@ -93,7 +93,7 @@ Run the following command in Terminal: `polymer serve`.
 Now in your browser, navigate to:
 
 ```
-http://127.0.0.1:8081/components/rise-data-range/demo/src/rise-data-range-dev.html
+http://127.0.0.1:8081/components/rise-data-range/demo/src/rise-data-range.html
 ```
 
 ## Submitting Issues
