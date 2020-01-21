@@ -1,8 +1,12 @@
-# Text Web Component [![CircleCI](https://circleci.com/gh/Rise-Vision/rise-data-range/tree/master.svg?style=svg)](https://circleci.com/gh/Rise-Vision/rise-data-range/tree/master)
+# Data Range Toolbox Web Component [![CircleCI](https://circleci.com/gh/Rise-Vision/rise-data-range/tree/master.svg?style=svg)](https://circleci.com/gh/Rise-Vision/rise-data-range/tree/master)
 
 ## Introduction
 
 `rise-data-range` is a Polymer 3 Web Component that provides an integer value between a minimum and a maximum.
+
+## Usage
+
+The below illustrates simple usage of the component.
 
 #### Example
 
@@ -14,6 +18,9 @@
   >
   </rise-data-range>
 ```
+
+This is not a visual component, so an event listener should be registered to
+process the data it provides. You can check the available events in the [events section](#events)
 
 ### Labels
 
@@ -43,6 +50,8 @@ This component receives the following list of attributes:
 - **value**: ( integer / required ): value between *min* and *max*.
 - **label**: ( string / optional ): An optional label key for the text that will appear in the template editor. See 'Labels' section above.
 
+This component does not support PUD.
+
 ### Events
 
 The component sends the following events:
@@ -55,6 +64,10 @@ The component sends the following events:
     console.log(event.detail.value); // prints new value.
   });
 ```
+
+### Logging
+
+The component is a very simple one, and logs no events to BQ.
 
 ## Built With
 - [Polymer 3](https://www.polymer-project.org/)
@@ -96,6 +109,40 @@ Now in your browser, navigate to:
 http://127.0.0.1:8081/components/rise-data-range/demo/src/rise-data-range.html
 ```
 
+### Demo project
+
+A demo project showing how to implement a simple rise-data-range listener can be found in the `demo` folder.
+
+### Integration in a Template
+
+After creating the Template's structure in `html-template-library`, add a reference to the component in the `<head>` section of `template.html`:
+
+```
+<script src="https://widgets.risevision.com/stable/components/rise-data-range/1/rise-data-range.js"></script>
+```
+
+Add an instance of the component, as shown in the example:
+
+```
+  <rise-data-range
+    id="rise-data-range-01"
+    label="Column width"
+    min="30"
+    max="70"
+    value="50"
+  >
+  </rise-data-range>
+```
+
+Interaction with the component using the JavaScript browser console is possible
+by manually running code like:
+
+```
+const dataRange01 = document.getElementById( 'rise-data-range-01' );
+
+dataRange01.setAttribute( 'value', '40' );
+```
+
 ## Submitting Issues
 If you encounter problems or find defects we really want to hear about them. If you could take the time to add them as issues to this Repository it would be most appreciated. When reporting issues, please use the following format where applicable:
 
@@ -123,4 +170,4 @@ If you are looking for help with Rise Vision, please see [Help Center](https://h
 
 **Facilitator**
 
-[Stuart Lees](https://github.com/stulees "Stuart Lees")
+[Santiago Arriaga Noguez](https://github.com/santiagonoguez "Santiago Arriaga Noguez")
