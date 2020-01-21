@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://widgets.risevision.com/scripts/primus-local-messaging.js"></script>
+
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+  <script type="module">
+    // this and the following block are needed at build time to force the creation of the shared bundle script
+    import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+  </script>
+  <script type="module">
+    import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+  </script>
+  <script src="https://widgets.risevision.com/beta/common/config-test.min.js"></script>
+  <script src="https://widgets.risevision.com/beta/common/common-template.min.js"></script>
+  <script src="https://widgets.risevision.com/components/rise-data-range/1/rise-data-range.js"></script>
+  <script>
+    if (document.domain.indexOf("localhost") === -1) {
+      try {
+        document.domain = "risevision.com";
+      } catch (err) {
+        // can't set document.domain, risevision.com not an accepted suffix of current document domain
+        console.log("document.domain can't be set", err);
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <rise-data-range id="rise-data-range-01"
+    label="Column width"
+    min="30"
+    max="70"
+    value="50"
+  >
+  </rise-data-range>
+
+  <div id="block">
+  </div>
+
+  <script>
+    function configureComponents() {
+      const rangeElement = document.getElementById( "rise-data-range-01" );
+      const block = document.getElementById( "block" );
+
+      rangeElement.addEventListener( "data-update", event => {
+        const value = event.detail.value;
+
+        block.innerHTML = value;
+      } );
+    }
+
+    window.addEventListener( "rise-components-ready", configureComponents );
+  </script>
+  <script>
+    RisePlayerConfiguration.configure();
+  </script>
+
+</body>
+</html>
